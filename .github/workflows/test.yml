@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 18
       - name: Install Dependencies
-        uses: npm ci
+        uses: actions/npm@v3 ci
       - name: Run npm tests
-        uses: npm test
+        uses: actions/npm@v3 test
+
