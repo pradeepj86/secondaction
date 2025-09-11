@@ -31,8 +31,9 @@ jobs:
           node-version: 18
       - name: Install Dependencies
         run: npm ci
-      - name: Run npm tests
+      - name: Run npm buil
         run: npm run build
+
 
 
 
