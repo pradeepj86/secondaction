@@ -3,17 +3,20 @@
 name: testworkflow
 
 # Controls when the workflow will run
-on: workflow_dispatch
+on: push
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   firstjob:
     runs-on: ubuntu-latest
     steps:
-      - name: Print some
-        run: echo "Hello"
-      - name: Print some
-        run: |
-          echo "Bye-Bye"
-          echo "Bye-Bye"
-          echo "Bye-Bye"
+      - name: download code
+        uses: actions/checkout@v3
+      - name: Install Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        uses: npm ci
+      - name: Run npm tests
+        uses: npm test
