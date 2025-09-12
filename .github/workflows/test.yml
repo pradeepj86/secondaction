@@ -7,7 +7,7 @@ on: push
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  firstjob:
+  buildjob:
     runs-on: ubuntu-latest
     steps:
       - name: download code
@@ -20,7 +20,8 @@ jobs:
         run: npm ci
       - name: Run npm tests
         run: npm test
-  deploy:
+  deployjob:
+    needs: buildjob
     runs-on: ubuntu-latest
     steps:
       - name: download code
@@ -33,6 +34,7 @@ jobs:
         run: npm ci
       - name: Run npm build
         run: npm run build
+
 
 
 
